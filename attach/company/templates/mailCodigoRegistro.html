@@ -1,0 +1,64 @@
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style>
+		
+		  body {
+		  	font-family: Roboto;
+		  }
+		  
+		  .divlogo {
+		  
+		  	padding: 20px;
+		  	border-right: 1px solid #0E4F47;
+		  	margin-top:auto;
+		  	margin-bottom:auto;
+		  }
+		  .divData{
+		  	margin:40px;
+		  }
+		  .divNumber {
+		  	font-size: 18px;
+		  	padding:10px;
+		  	color: white;
+		  	font-weight: bold;
+		  }
+		  .number {
+		  	
+		  	margin-bottom: 10px;
+		  	padding:7px;
+		  	margin-right:10px;
+		  	border-radius: 10px;
+		  	background-color:#09A69C;
+		  	float: left;
+		  }
+		  .texto {
+		  	color:#0E4F47;
+		  	padding:10px;
+		  }
+		</style>
+	</head>
+	<body>
+		<table>
+		    <tbody>
+		        <tr>
+		            <td class="divlogo">
+						<img src="cid:logo" style="width: 100px;"/>
+		            </td>
+		            <td>
+		                <div class="divData">
+		                    <p class="texto" th:text="${nombre}+' ha procesado una solicitud de registro, para finalizar el proceso le facilitamos el código de validación' "></p>
+		                    <div class="divNumber">
+		                        <span class="number" th:text="${codigo1}"></span>
+		                        <span class="number" th:text="${codigo2}"></span>
+		                        <span class="number" th:text="${codigo3}"></span>
+		                        <span class="number" th:text="${codigo4}"></span>
+		                    </div>
+		                </div>
+		            </td>
+		        </tr>
+		    </tbody>
+		</table>
+	</body>
+</html>

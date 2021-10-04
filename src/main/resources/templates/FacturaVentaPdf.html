@@ -1,0 +1,155 @@
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+
+
+		<style>
+			@media print {
+				div {
+					page-break-inside : avoid;
+					-fs-keep-with-inline : keep;
+					-fs-table-paginate: paginate;
+				}
+			}
+
+			body {
+				font-size: 16px; 
+				line-height: 24px; 
+				font-family: Roboto; 
+				color: #4D4D4D;
+			}
+			span p {
+				color: #4D4D4D;
+			}
+			.container {
+				width: 1000px; 
+				margin: auto; 
+				/* padding: 30px;  */
+
+			}
+				
+		  	.divlogo {
+		  		vertical-align: top;
+		  		padding:20px;
+		  		padding-top: 40px;
+		  		border-right: 1px solid #0E4F47;
+		  	}
+		  	.title {
+		  		padding: 5px;
+		  		vertical-align: top;
+		  		color: #1C6E6A;
+		  		border-bottom: 1px solid #1C6E6A;
+		  	}
+		  	
+		  	
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			
+			<table style="width: 100%; line-height: inherit; text-align: left">
+		        <tbody>
+		            <tr>
+		                <td style="text-align: left;">
+		                    <img th:src="@{'data:image/jpeg;base64,'+${logo}}" style="width: 150px;" />
+		                </td>                        
+						<td style="width: 10%"></td>
+
+						<td style="font-family: Arial;color:#555555;  vertical-align: bottom;"  >
+							<p style="font-weight: bold;margin: 0 10px 0 0; text-align:right;">Factura Nº:&#xA0;&#xA0;&#xA0;<span style="font-weight: normal;" th:text="${factura.no}"></span></p>
+							<p style="font-weight: bold;margin: 0 10px 0 0; text-align:right;">Fecha:&#xA0;&#xA0;&#xA0; <span style="font-weight: normal;" th:text="${#dates.format(factura.fecha,'dd/MM/yyyy' )}"></span>  </p>
+						</td>
+		                
+		            </tr>
+		
+		            <tr>
+		                <td style="border-top: 1px solid #1C6E6A;text-align: center; padding: 10px; text-align: left;vertical-align: top;background-color: pink; width: 100px">
+								<p style="margin: 0;" th:text="${configuracion.nombre}"></p>
+								<p style="margin: 0;" th:text="${configuracion.direccion}"></p>
+								<p style="margin: 0;" th:text="${configuracion.poblacion} +' '+${configuracion.cp}+ ' '+ ${configuracion.provincia}"></p>
+								<p style="margin: 0;" th:text="${configuracion.cif}"></p>
+		                </td>
+						<td style="width: 10%"></td>	
+		                
+		                <td style="border-top: 1px solid #1C6E6A;text-align: center; padding: 10px; text-align: right;vertical-align: top; background-color: pink;margin-left: 10px;width: 100px;">
+							
+							<p style="margin: 0;"th:text="${factura.cliNombre}"></p>
+							<p style="margin: 0;"th:text="${factura.cliDireccion}"></p>
+							<p style="margin: 0;"th:text="${factura.cliCp} +' '+ ${factura.cliPoblacion}"></p>
+							<p style="margin: 0;"th:text="${factura.cliProvincia}"></p>
+							<p style="margin: 0;"th:text="${factura.cliNif}"></p>
+							
+		                </td>
+		            </tr>
+		        </tbody>
+				<tbody>
+		            <tr>
+		                <td style="text-align: left;">
+		                    <img th:src="@{'data:image/jpeg;base64,'+${logo}}" style="width: 150px;" />
+		                </td>                        
+						<td style="width: 10%"></td>
+
+						<td style="font-family: Arial;color:#555555;  vertical-align: bottom;"  >
+							<p style="font-weight: bold;margin: 0 10px 0 0; text-align:right;">Factura adsfNº:&#xA0;&#xA0;&#xA0;<span style="font-weight: normal;" th:text="${factura.no}"></span></p>
+							<p style="font-weight: bold;margin: 0 10px 0 0; text-align:right;">Fecha:&#xA0;&#xA0;&#xA0; <span style="font-weight: normal;" th:text="${#dates.format(factura.fecha,'dd/MM/yyyy' )}"></span>  </p>
+						</td>
+		                
+		            </tr>
+		
+		            <tr>
+		                <td style="border-top: 1px solid #1C6E6A;text-align: center; padding: 10px; text-align: left;vertical-align: top;width: 100px">
+								<p style="margin: 0;" th:text="${configuracion.nombre}"></p>
+								<p style="margin: 0;" th:text="${configuracion.direccion}"></p>
+								<p style="margin: 0;" th:text="${configuracion.poblacion} +' '+${configuracion.cp}+ ' '+ ${configuracion.provincia}"></p>
+								<p style="margin: 0;" th:text="${configuracion.cif}"></p>
+		                </td>
+						<td style="width: 10%"></td>	
+		                
+		                <td style="border-top: 1px solid #1C6E6A;text-align: center; padding: 10px; text-align: right;vertical-align: top; margin-left: 10px;width: 100px;">
+							
+							<p style="margin: 0;"th:text="${factura.cliNombre}"></p>
+							<p style="margin: 0;"th:text="${factura.cliDireccion}"></p>
+							<p style="margin: 0;"th:text="${factura.cliCp} +' '+ ${factura.cliPoblacion}"></p>
+							<p style="margin: 0;"th:text="${factura.cliProvincia}"></p>
+							<p style="margin: 0;"th:text="${factura.cliNif}"></p>
+							
+		                </td>
+		            </tr>
+		        </tbody>
+		    </table>
+
+
+		    
+		    <div style="height: 20px"></div>
+			
+			<div th:if= "${#lists.size(factura.facturaVentaLineas) > 0}">
+		        <div style="margin:10px 0px 10px 0px;padding:20px;border: 1px solid #1C6E6A;border-radius: 10px;">
+		            <p style="padding: 5px; vertical-align: top; color: #1C6E6A; border-bottom: 1px solid #1C6E6A">
+		                CARGOS
+		            </p>
+
+		            <table style="width: 100%">
+						<tr style="margin:10px; color: #1C6E6A;">
+							<th style="padding: 5px; width: 70%;font-weight: normal;">Concepto</th>
+							<th style="padding: 5px; width: 30%;margin-left: 40px;font-weight: normal;" >Cantidad</th>
+						</tr>
+						<tr  style="padding-left:10px; list-style-type:none;width: 100%; background-color: #EFEFEF; margin:5px 0px 5px 0px" th:each="item: ${factura.facturaVentaLineas}">
+							<td style="padding: 5px; width: 70%;" th:text="${item.descripcion}"></td>
+							<td style="padding: 5px; width: 30%;" th:text="${item.cantidad}"></td>
+						</tr>
+		            </table>
+		        </div>
+			</div>
+
+
+
+
+			
+			
+			
+		</div>
+	</body>
+</html>
+
+
+

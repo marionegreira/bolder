@@ -1,0 +1,27 @@
+{
+	"secrets":{
+		"mobile":"mv89458miofk594;jrfmn84",
+		"userWeb":"vmoifnjglok98+276g8njds",
+		"extAnon":"9jkovd088ifnjglok54l76g8nj9ds"
+	},
+	"db":{
+		"conectionString":"jdbc:postgresql://localhost:5432/bolder?useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&jdbcCompliantTruncation=false",
+		"userName":"bolder",
+		"password":"Raf1712."
+	},
+	"webServer":{
+		"port":8085,
+		"url":"https://localhost:3000"
+	},
+	"properties": {
+		"spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.PostgreSQLDialect",
+		"spring.jpa.properties.hibernate.connection.charSet" : "UTF-8",
+		"spring.jpa.properties.hibernate.hbm2ddl.import_files_sql_extractor" : "org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor",
+		"spring.jpa.hibernate.ddl-auto" : "update",
+		"spring.servlet.multipart.max-file-size" : "400MB",
+		"spring.servlet.multipart.max-request-size" : "400MB",
+		"spring.jpa.open-in-view" : "false",
+		"logging.level.org.springframework.boot.autoconfigure" : "INFO"
+	}
+	
+}

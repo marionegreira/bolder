@@ -1,0 +1,96 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style>
+			.divlogo {
+				
+				padding: 20px;
+				border-right: 1px solid #0E4F47;
+				vertical-align: top;
+			}
+		  .labelline {
+		  	font-weight: 500;
+		  	color:#0E4F47;
+		  	padding:10px 10px 5px 10px;
+		  }
+		  .dataline {
+		  	margin:10px 10px 0px 10px;
+			
+		  }
+		  .bold {
+			font-weight:bold;
+		  }
+		  .datalineValue {
+		  	font-weight:normal;
+		  }
+		  .txtCompany {
+			color:#0E4F47;
+			margin: 5px 10px 0px 10px;	
+			font-weight: bold;
+		  }
+		  
+		  .divItem {
+			border-bottom: 1px solid #878787;
+			padding-bottom: 20px;
+		  }
+		  .firmaTitle {
+			font-size: 14px;
+			font-weight: bold;
+			color: #477e3d;
+		  }
+		  .firmaLine {
+			font-size: 10px;
+			color: #999999;
+			margin: 2px 0px;
+		  }
+		  
+		</style>
+	</head>
+
+	<body style="font-family: Roboto;">
+		<table style="margin: 100px 0px 0px 150px;">
+		    <tbody>
+		        <tr>
+				
+					<td >
+						<div style="margin:0px 10px 0px 10px;width: 800px;">
+							<p class="dataline" style="margin-bottom:30px">Se ha generado una nueva factura,</p>
+							<p class="dataline bold" > Nº Factura: <span class="datalineValue" th:text="${factura.no}">54454</span> </p>
+							<p class="dataline bold" > Fecha: <span class="datalineValue" th:text="${factura.fecha}">54454</span> </p>
+							<p class="dataline bold" > Importe: <span class="datalineValue" th:text="${new java.text.DecimalFormat('###,###.######').format(factura.importeNeto)}" >981918</span> </p>
+							<p class="dataline" style="margin-top:30px">Recibe un cordial saludo.</p>
+						</div>
+					</td>	
+
+				</tr>
+				
+				
+			</tbody>
+		</table>
+		
+		<table style="margin-top: 100px;">
+		    <tbody>
+		        <tr>
+		            <td class="divlogo">
+						<img src="cid:logo" style="width: 100px;"/>
+		            </td>
+				
+					<td >
+						<div style="margin:0px 10px 0px 10px;width: 800px;">
+							<p class="firmaTitle" th:text="${configuracion.nombre}">Mario Negreira Souto</p>
+							<p class="firmaLine" th:text="${configuracion.direccion}"> José Ramallo,58</p>
+							<p class="firmaLine" th:text="${configuracion.cp +' '+ configuracion.poblacion +' '+ configuracion.provincia}"> 15189 Tarrío La Coruña</p>
+							<span style="font-size: 10px;color: #999999;margin: 2px 0px;font-weight:bold">T:</span> <a th:href="'tel:' + ${configuracion.telefono}" class="firmaLine" th:text="${configuracion.telefono}">621003783</a>
+							<span style="font-size: 10px;color: #999999;margin: 2px 0px;font-weight:bold">E:</span>  <a th:href="'mailto:' + ${configuracion.email}" class="firmaLine" th:text="${configuracion.email}">mario@negreira.net</a>
+						</div>
+					</td>	
+				</tr>
+				
+			</tbody>
+		</table>
+			
+			
+	</body>
+</html>
+
+

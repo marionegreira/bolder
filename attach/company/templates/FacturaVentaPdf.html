@@ -1,0 +1,157 @@
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+
+
+		<style>
+			@media print {
+				div {
+					page-break-inside : avoid;
+					-fs-keep-with-inline : keep;
+					-fs-table-paginate: paginate;
+				}
+			}
+
+			body {
+				font-size: 12px; 
+				line-height: 24px; 
+				font-family: Roboto; 
+				color: #4D4D4D;
+			}
+			span p {
+				color: #4D4D4D;
+			}
+			.container {
+				width: 680px; 
+				margin: auto; 
+				/* padding: 30px;  */
+
+			}
+				
+		  	.divlogo {
+		  		vertical-align: top;
+		  		padding:20px;
+		  		padding-top: 40px;
+		  		border-right: 1px solid #0E4F47;
+		  	}
+		  	.title {
+		  		padding: 5px;
+		  		vertical-align: top;
+		  		color: #1C6E6A;
+		  		border-bottom: 1px solid #1C6E6A;
+		  	}
+			.total-linea {
+				font-weight: normal;
+				margin: 0 10px 0 0;
+				text-align:right;
+			}
+			.total-linea-total {
+				font-weight: bold;
+				margin: 20px 10px 0 0;
+				text-align:right;
+			}
+		  	
+		  	
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			
+			<table style="width: 100%; line-height: inherit; text-align: left">
+				<tbody>
+		            <tr>
+		                <td style="text-align: left;">
+		                    <img th:src="@{'data:image/jpeg;base64,'+${logo}}" style="width: 150px;" />
+		                </td>                        
+						<td style="width: 10%"></td>
+
+						<td style="font-family: Arial;color:#555555;  vertical-align: bottom;"  >
+							<p style="font-weight: bold;margin: 0 10px 0 0; text-align:right;">Factura Nº:&#xA0;&#xA0;&#xA0;<span style="font-weight: normal;" th:text="${factura.no}"></span></p>
+							<p style="font-weight: bold;margin: 0 10px 0 0; text-align:right;">Fecha:&#xA0;&#xA0;&#xA0; <span style="font-weight: normal;" th:text="${#dates.format(factura.fecha,'dd/MM/yyyy' )}"></span>  </p>
+						</td>
+		                
+		            </tr>
+		
+		            <tr>
+		                <td style="border-top: 1px solid #1C6E6A;text-align: center; padding: 10px; text-align: left;vertical-align: top;width: 100px">
+								<p style="margin: 0;" th:text="${configuracion.nombre}"></p>
+								<p style="margin: 0;" th:text="${configuracion.direccion}"></p>
+								<p style="margin: 0;" th:text="${configuracion.poblacion} +' '+${configuracion.cp}+ ' '+ ${configuracion.provincia}"></p>
+								<p style="margin: 0;" th:text="${configuracion.cif}"></p>
+		                </td>
+						<td style="width: 10%"></td>	
+		                
+		                <td style="border-top: 1px solid #1C6E6A;text-align: center; padding: 10px; text-align: right;vertical-align: top; margin-left: 10px;width: 100px;">
+							
+							<p style="margin: 0;"th:text="${factura.cliNombre}"></p>
+							<p style="margin: 0;"th:text="${factura.cliDireccion}"></p>
+							<p style="margin: 0;"th:text="${factura.cliCp} +' '+ ${factura.cliPoblacion} +' '+ ${factura.cliProvincia}"></p>
+							<p style="margin: 0;"th:text="${factura.cliNif}"></p>
+							
+		                </td>
+		            </tr>
+		        </tbody>
+		    </table>
+
+
+		    
+		    <div style="height: 20px"></div>
+			
+			<div th:if= "${#lists.size(factura.facturaVentaLineas) > 0}">
+		        <div style="margin:10px 0px 10px 0px;padding:20px;border: 1px solid #1C6E6A;border-radius: 10px;">
+
+		            <table style="width: 100%; border-collapse: collapse;">
+						<thead style="margin:10px; color: #1C6E6A;text-align: right;">
+							<tr style="border-bottom: solid white 30px;">
+								<th style="padding: 5px; width: 50%; text-align: left">Articulo</th>
+								<th style="padding: 5px; width: 5%;margin-left: 40px">Cantidad</th>
+								<th style="padding: 5px; width: 10%;margin-left: 40px;" >Precio</th>
+								<th style="padding: 5px; width: 10%;margin-left: 40px;" >Importe</th>
+								<th style="padding: 5px; width: 10%;margin-left: 40px;" >Iva</th>
+								<th style="padding: 5px; width: 15%;margin-left: 40px;" >Total</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr  style="padding-left:10px; text-align: right; list-style-type:none;width: 100%; background-color: #EFEFEF; border-bottom: solid white 5px;" th:each="item: ${factura.facturaVentaLineas}">
+								<td style="padding: 5px; width: 50%;text-align: left;" th:text="${item.articuloCodigo} + ' - ' + ${item.descripcion}"></td>
+								<td style="padding: 5px; width: 5%;" th:text="${new java.text.DecimalFormat('###,###.######').format(item.cantidad)}"></td>
+								<td style="padding: 5px; width: 10%;" th:text="${new java.text.DecimalFormat('###,###.######').format(item.precio)}"></td>
+								<td style="padding: 5px; width: 10%;" th:text="${new java.text.DecimalFormat('###,###.######').format(item.importeBruto)} "></td>
+								<td style="padding: 5px; width: 10%;" th:text="${new java.text.DecimalFormat('###,###.######').format(item.iva)}+'%' "></td>
+								<td style="padding: 5px; width: 15%;" th:text="${new java.text.DecimalFormat('###,###.######').format(item.importeNeto)}"></td>
+							</tr>
+						</tbody>
+		            </table>
+		        </div>
+			</div>
+
+			<table style="width: 100%; line-height: inherit; text-align: left">
+				<tbody>
+		            <tr style="width: 50%;">
+						<td style="width: 200px">
+						</td>
+						<td style="border: 1px solid #1C6E6A;text-align: center; padding: 10px; text-align: left;vertical-align: top;width: 100px;border-radius: 10px;">
+							<p class="total-linea" >Importe Bruto:&#xA0;&#xA0;&#xA0;<span style="font-weight: normal;" th:text="${new java.text.DecimalFormat('###,###.######').format(factura.importeBruto)}+' €'"></span></p>
+							<p class="total-linea">Importe Iva:&#xA0;&#xA0;&#xA0;<span style="font-weight: normal;" th:text="${new java.text.DecimalFormat('###,###.######').format(factura.importeIva)}+' €'"></span></p>
+							<p class="total-linea" th:if= "${factura.importeRetencion > 0}">Importe Retencion:&#xA0;&#xA0;&#xA0;<span  th:text="${new java.text.DecimalFormat('###,###.######').format(factura.importeRetencion)}+' €'"></span></p>
+							<p class="total-linea-total">TOTAL:&#xA0;&#xA0;&#xA0;<span th:text="${new java.text.DecimalFormat('###,###.######').format(factura.importeNeto)}+' €'"></span></p>
+						</td>
+		                
+		            </tr>
+
+		        </tbody>
+		    </table>
+
+
+
+
+			
+			
+			
+		</div>
+	</body>
+</html>
+
+
+

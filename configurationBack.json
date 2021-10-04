@@ -1,0 +1,15 @@
+{
+	secrets:{
+		mobile:"mv89458miofvd088k594;jrfmn84",
+		userWeb:"vmoifnjglok98+276g8njds"
+	},
+	db:{
+		conectionString:"jdbc:mysql://localhost/sp3?useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&jdbcCompliantTruncation=false",
+		userName:"sp",
+		password:"Raf1712."
+	},
+	webServer:{
+		port:8085
+	}
+	
+}

@@ -1,0 +1,74 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style>
+			.divlogo {
+				
+				padding: 20px;
+				border-right: 1px solid #0E4F47;
+				vertical-align: top;
+			}
+		  .labelline {
+		  	font-weight: 500;
+		  	color:#0E4F47;
+		  	padding:10px 10px 5px 10px;
+		  }
+		  .dataline {
+		  	color:#878787;
+		  	margin:10px 10px 0px 10px;
+		  	
+		  }
+		  .txtCompany {
+			color:#0E4F47;
+			margin: 5px 10px 0px 10px;	
+			font-weight: bold;
+		  }
+		  
+		  .divItem {
+			border-bottom: 1px solid #878787;
+			padding-bottom: 20px;
+		  }
+		</style>
+	</head>
+	<body style="font-family: Roboto;">
+		<table>
+		    <tbody>
+		        <tr>
+		            <td class="divlogo">
+						<img src="cid:logo" style="width: 100px;"/>
+		            </td>
+		            <td>
+						<div style="margin:30px 10px 30px 10px;width: 800px;">
+
+							<p class="txtCompany" th:text="${configuracion.nombre}"></p>
+							<p class="txtCompany" th:text="${configuracion.direccion}"></p>
+							<p class="txtCompany" th:text="${configuracion.poblacion} +' '+${configuracion.cp}+ ' '+ ${configuracion.provincia}"></p>
+							<p class="txtCompany" style="margin-bottom: 100px;" th:text="${configuracion.cif}"></p>
+			
+							<div class="divItem">
+								<p class="labelline">CASO Nº:</p>
+								<p class="dataline" th:text="${docventa.id}">adsf</p>
+							</div>   
+							<div class="divItem">
+								<p class="labelline">CENTRO:</p>
+								<p class="dataline" th:text="${docventa.centro.nombre}"></p>
+								<p class="dataline" th:text="${docventa.centro.direccion}"></p>
+								<p class="dataline" th:text="${docventa.centro.cp} + ' '+${docventa.centro.poblacion}"></p>
+
+							</div>  
+							<div class="divItem">
+								<p class="labelline">DESCRIPCION:</p>
+								<p class="dataline" th:text="${docventa.descripcion}"></p>
+							</div>  
+
+							<p class="dataline" style="margin-top: 5px;">A continuación les proporcionamos la documentación adjunta al docventa en formato pdf. <a style="margin-left: 20px" th:href="${urlPdfDocVentaCab}">PULSE AQUÍ</a>.</p>
+							<p class="dataline" style="margin-top: 30px;font-size: 0.7em">* Los vínculos caducarán pasados 2 meses</p>
+						</div>
+		            </td>
+		        </tr>
+		    </tbody>
+		</table>
+	</body>
+</html>
+
+
